@@ -80,6 +80,7 @@ public class App {
     private void actionList() {
         System.out.println("번호 / 작가 / 명언");
         System.out.println("--------------------");
+
         List<WiseSaying> wiseSayingList = findList();
 
         for (WiseSaying wiseSaying : wiseSayingList) {
@@ -110,11 +111,7 @@ public class App {
     }
 
     private void write(String content, String author) {
-        WiseSaying wiseSaying = new WiseSaying();
-
-        wiseSaying.content = content;
-        wiseSaying.author = author;
-        wiseSaying.id = ++lastId;
+        WiseSaying wiseSaying = new WiseSaying(content, author, ++lastId);
         lastWiseSayingIndex++;
 
         ws.add(wiseSaying);
