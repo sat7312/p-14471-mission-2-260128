@@ -4,9 +4,8 @@ import java.util.Scanner;
 
 public class App {
 
-    Scanner sc = new Scanner(System.in);
-
-    List<WiseSaying> ws = new ArrayList<>();
+    private Scanner sc = new Scanner(System.in);
+    private List<WiseSaying> ws = new ArrayList<>();
     private int lastId = 0;
     private int lastWiseSayingIndex = -1;
 
@@ -42,13 +41,13 @@ public class App {
         if (wise == null) {
             System.out.println(id + "번 명언은 존재하지 않습니다.");
         } else {
-            System.out.println("명언(기존) : " + wise.content);
+            System.out.println("명언(기존) : " + wise.getContent());
             System.out.print("명언 : ");
-            wise.content = sc.nextLine();
+            wise.setContent(sc.nextLine());
 
-            System.out.println("작가(기존) : " + wise.author);
+            System.out.println("작가(기존) : " + wise.getAuthor());
             System.out.print("작가 : ");
-            wise.author = sc.nextLine();
+            wise.setAuthor(sc.nextLine());
         }
     }
 
@@ -70,7 +69,7 @@ public class App {
 
     private WiseSaying findObject(int id) {
         for (WiseSaying w : ws) {
-            if (w.id == id) {
+            if (w.getId() == id) {
                 return w;
             }
         }
@@ -83,8 +82,8 @@ public class App {
 
         List<WiseSaying> wiseSayingList = findList();
 
-        for (WiseSaying wiseSaying : wiseSayingList) {
-            System.out.println(wiseSaying.id + " / " + wiseSaying.author + " / " + wiseSaying.content);
+        for (WiseSaying wise : wiseSayingList) {
+            System.out.println(wise.getId() + " / " + wise.getAuthor() + " / " + wise.getContent());
         }
     }
 
@@ -92,7 +91,7 @@ public class App {
         List<WiseSaying> wiseSayingList = new ArrayList<>();
 
         for (int i = ws.size() - 1; i >= 0; i--) {
-            if (ws.get(i).content != null && ws.get(i).author != null) {
+            if (ws.get(i).getContent() != null && ws.get(i).getAuthor() != null) {
                 wiseSayingList.add(ws.get(i));
             }
         }
